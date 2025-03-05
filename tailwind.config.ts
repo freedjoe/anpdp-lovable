@@ -61,6 +61,11 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))"
         },
+        algeria: {
+          green: "#0F9B45", // Algerian flag green
+          red: "#BE1E2D",   // Algerian flag red
+          white: "#FFFFFF"  // Algerian flag white
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

@@ -38,4 +38,5 @@ export const getBrowserLanguage = (): Language => {
     : 'fr') as Language;
 };
 
-export { Language };
+// Re-export the Language type with proper syntax for isolatedModules
+export type { Language };

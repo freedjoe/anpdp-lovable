@@ -28,7 +28,7 @@ export const Footer = () => {
   return (
     <footer className="bg-secondary">
       <div className="container-custom py-12">
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {/* Logo and Info */}
           <div className="flex flex-col space-y-4">
             <Link to="/" className="flex items-center space-x-2">
@@ -61,12 +61,47 @@ export const Footer = () => {
                 </li>
               ))}
             </ul>
+            
+            {/* Social Media Links */}
+            <div className="mt-6">
+              <h3 className="mb-4 text-lg font-medium">{t('footer.followUs')}</h3>
+              <div className="flex space-x-3">
+                <a 
+                  href="#" 
+                  className="rounded-full bg-foreground/5 p-2 text-muted-foreground transition-colors hover:bg-foreground/10 hover:text-primary"
+                  aria-label="Facebook"
+                >
+                  <Facebook className="h-5 w-5" />
+                </a>
+                <a 
+                  href="#" 
+                  className="rounded-full bg-foreground/5 p-2 text-muted-foreground transition-colors hover:bg-foreground/10 hover:text-primary"
+                  aria-label="Twitter"
+                >
+                  <Twitter className="h-5 w-5" />
+                </a>
+                <a 
+                  href="#" 
+                  className="rounded-full bg-foreground/5 p-2 text-muted-foreground transition-colors hover:bg-foreground/10 hover:text-primary"
+                  aria-label="Instagram"
+                >
+                  <Instagram className="h-5 w-5" />
+                </a>
+                <a 
+                  href="#" 
+                  className="rounded-full bg-foreground/5 p-2 text-muted-foreground transition-colors hover:bg-foreground/10 hover:text-primary"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin className="h-5 w-5" />
+                </a>
+              </div>
+            </div>
           </div>
 
-          {/* Contact Info */}
+          {/* Contact Info with Map */}
           <div>
             <h3 className="mb-4 text-lg font-medium">{t('footer.contact')}</h3>
-            <div className="space-y-3">
+            <div className="space-y-3 mb-4">
               <div className="flex items-start space-x-2" style={{ direction: 'ltr' }}>
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" />
                 <span className="text-sm text-muted-foreground">
@@ -91,42 +126,9 @@ export const Footer = () => {
                 </a>
               </div>
             </div>
-          </div>
-
-          {/* Map */}
-          <div>
-            <h3 className="mb-4 text-lg font-medium">{t('footer.followUs')}</h3>
-            <div className="mb-4 flex space-x-3">
-              <a 
-                href="#" 
-                className="rounded-full bg-foreground/5 p-2 text-muted-foreground transition-colors hover:bg-foreground/10 hover:text-primary"
-                aria-label="Facebook"
-              >
-                <Facebook className="h-5 w-5" />
-              </a>
-              <a 
-                href="#" 
-                className="rounded-full bg-foreground/5 p-2 text-muted-foreground transition-colors hover:bg-foreground/10 hover:text-primary"
-                aria-label="Twitter"
-              >
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a 
-                href="#" 
-                className="rounded-full bg-foreground/5 p-2 text-muted-foreground transition-colors hover:bg-foreground/10 hover:text-primary"
-                aria-label="Instagram"
-              >
-                <Instagram className="h-5 w-5" />
-              </a>
-              <a 
-                href="#" 
-                className="rounded-full bg-foreground/5 p-2 text-muted-foreground transition-colors hover:bg-foreground/10 hover:text-primary"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="h-5 w-5" />
-              </a>
-            </div>
-            <div className="h-36 w-full overflow-hidden rounded-lg">
+            
+            {/* Map */}
+            <div className="h-36 w-full overflow-hidden rounded-lg mt-4">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3197.2238447594136!2d3.0383!3d36.7574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzbCsDQ1JzI2LjYiTiAzwrAwMicxNy45IkU!5e0!3m2!1sen!2sus!4v1652276580000!5m2!1sen!2sus"
                 width="100%"

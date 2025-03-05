@@ -1,7 +1,7 @@
 
 import { useLanguage } from '@/context/LanguageContext';
 import { getTranslation } from '@/utils/i18n';
-import { Globe } from 'lucide-react';
+import { ChevronDown, Globe } from 'lucide-react';
 import React, { useState, useRef, useEffect } from 'react';
 
 export const LanguageSwitcher = () => {
@@ -16,6 +16,9 @@ export const LanguageSwitcher = () => {
     { code: 'fr', name: t('languages.fr') },
     { code: 'ar', name: t('languages.ar') },
   ];
+
+  // Get current language display name
+  const currentLanguage = languages.find(lang => lang.code === language)?.name || language;
 
   const handleClickOutside = (event: MouseEvent) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -33,11 +36,12 @@ export const LanguageSwitcher = () => {
   return (
     <div className="relative" ref={dropdownRef}>
       <button
-        className="flex items-center rounded-full p-2 transition-colors hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-primary/50"
+        className="flex items-center gap-1 rounded-md px-2 py-1 text-sm transition-colors hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-primary/50"
         onClick={() => setIsOpen(!isOpen)}
         aria-label={t('actions.language')}
       >
-        <Globe className="h-5 w-5" />
+        <span>{currentLanguage}</span>
+        <ChevronDown className="h-4 w-4" />
       </button>
 
       {isOpen && (

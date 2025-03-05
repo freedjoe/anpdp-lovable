@@ -2,7 +2,7 @@
 import { useLanguage } from '@/context/LanguageContext';
 import { NavItem } from '@/types';
 import { getTranslation } from '@/utils/i18n';
-import { Menu, X } from 'lucide-react';
+import { ChevronDown, Menu, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { LanguageSwitcher } from '../ui/LanguageSwitcher';
@@ -41,56 +41,74 @@ export const Header = () => {
   }, [location]);
 
   return (
-    <header
-      className={`fixed top-0 z-40 w-full transition-all duration-300 ${
-        isScrolled ? 'border-b bg-background/80 backdrop-blur-lg' : 'bg-transparent'
-      }`}
-    >
-      <div className="container-custom mx-auto flex h-16 items-center justify-between">
-        {/* Logo and Site Name */}
-        <Link to="/" className="flex items-center space-x-2">
-          <div className="flex items-center gap-2">
-            <img
-              src="https://anpdp.dz/fr/wp-content/uploads/sites/2/2022/07/cropped-logo-anpdp-sm.png"
-              alt="ANPDP Logo"
-              className="h-10 w-auto"
-            />
-            <span className="hidden text-lg font-semibold md:block">
-              {language === 'ar' ? 'السلطة الوطنية لحماية البيانات' : 'ANPDP'}
-            </span>
+    <header className="fixed top-0 z-40 w-full">
+      {/* Top bar with logo and title */}
+      <div className={`w-full transition-all duration-300 ${
+        isScrolled ? 'bg-background/80 backdrop-blur-lg' : 'bg-background'
+      }`}>
+        <div className="container-custom mx-auto py-3">
+          <div className="flex items-center justify-between">
+            {/* Logo and Organization Name */}
+            <div className="flex items-center">
+              <Link to="/" className="flex items-center gap-3">
+                <img
+                  src="/lovable-uploads/da04caaa-8b93-4c2c-9dfd-7ef8fd688d24.png"
+                  alt="ANPDP Logo"
+                  className="h-14 w-auto"
+                />
+                <div className="flex flex-col">
+                  <span className="text-lg font-semibold text-primary">ANPDP</span>
+                  <span className="hidden text-xs lg:block">
+                    {language === 'fr' ? 'AUTORITÉ NATIONALE DE PROTECTION DES DONNÉES À CARACTÈRE PERSONNEL' : 
+                     language === 'ar' ? 'السلطة الوطنية لحماية المعطيات ذات الطابع الشخصي' :
+                     'NATIONAL AUTHORITY FOR PERSONAL DATA PROTECTION'}
+                  </span>
+                </div>
+              </Link>
+            </div>
+
+            {/* Right side with language and search */}
+            <div className="flex items-center gap-4">
+              <SearchModal />
+              <LanguageSwitcher />
+              <ThemeToggle />
+              
+              {/* Mobile Menu Button */}
+              <button
+                className="rounded-md p-2 text-foreground lg:hidden"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+              >
+                {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              </button>
+            </div>
           </div>
-        </Link>
+        </div>
+      </div>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden lg:block">
-          <ul className="flex items-center space-x-6" style={{ flexDirection: direction === 'rtl' ? 'row-reverse' : 'row' }}>
-            {navItems.map((item) => (
-              <li key={item.href}>
-                <Link
-                  to={item.href}
-                  className={`nav-link ${location.pathname === item.href ? 'nav-link-active' : ''}`}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        {/* Action Icons */}
-        <div className="flex items-center space-x-2">
-          <SearchModal />
-          <LanguageSwitcher />
-          <ThemeToggle />
-
-          {/* Mobile Menu Button */}
-          <button
-            className="ml-2 rounded-md p-2 text-foreground lg:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
-          >
-            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
+      {/* Navigation Bar */}
+      <div className="bg-primary text-primary-foreground">
+        <div className="container-custom mx-auto">
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:block">
+            <ul 
+              className="flex h-12 items-center space-x-6" 
+              style={{ flexDirection: direction === 'rtl' ? 'row-reverse' : 'row' }}
+            >
+              {navItems.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    to={item.href}
+                    className={`flex items-center px-3 py-2 text-sm font-medium text-white hover:bg-primary-foreground/10 ${
+                      location.pathname === item.href ? 'bg-primary-foreground/20' : ''
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
       </div>
 

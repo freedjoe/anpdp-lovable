@@ -1,0 +1,79 @@
+
+{
+  "meta": {
+    "title": "Autorité Nationale de Protection des Données à Caractère Personnel - Algérie",
+    "description": "L'Autorité Nationale de Protection des Données à Caractère Personnel en Algérie est responsable d'assurer la protection des données personnelles et des droits à la vie privée."
+  },
+  "nav": {
+    "home": "Accueil",
+    "about": "Qui sommes-nous ?",
+    "activities": "Activités",
+    "concernedParties": "Organismes Concernés",
+    "events": "Événements",
+    "contact": "Contact"
+  },
+  "actions": {
+    "search": "Rechercher",
+    "language": "Langue",
+    "theme": "Thème",
+    "readMore": "Lire Plus",
+    "viewAll": "Voir Tout",
+    "loadMore": "Charger Plus",
+    "submit": "Soumettre",
+    "send": "Envoyer"
+  },
+  "languages": {
+    "en": "Anglais",
+    "fr": "Français",
+    "ar": "Arabe"
+  },
+  "hero": {
+    "slide1": {
+      "title": "Protection des Données Personnelles",
+      "description": "L'Autorité Nationale de Protection des Données à Caractère Personnel s'engage à protéger votre vie privée et vos informations personnelles."
+    },
+    "slide2": {
+      "title": "À propos de la Loi 18-07",
+      "description": "Découvrez le cadre juridique qui régit la protection des données personnelles en Algérie."
+    },
+    "slide3": {
+      "title": "Croissance Économique et Numérique",
+      "description": "Découvrez comment la protection des données contribue au développement économique et numérique durable."
+    },
+    "slide4": {
+      "title": "Invitation aux Organismes Concernés",
+      "description": "Enregistrez votre organisation pour assurer la conformité avec les réglementations sur la protection des données."
+    }
+  },
+  "about": {
+    "title": "À propos de l'Autorité",
+    "description": "L'Autorité Nationale de Protection des Données à Caractère Personnel (ANPDP) est une autorité administrative indépendante créée pour superviser la protection des données personnelles en Algérie. Notre mission est d'assurer la bonne application de la loi concernant le traitement des données personnelles et de garantir que ce traitement respecte la dignité humaine, la vie privée et les libertés publiques."
+  },
+  "statistics": {
+    "title": "Notre Impact",
+    "concernedParties": "Organismes Concernés",
+    "dataProtectionCases": "Cas de Protection de Données",
+    "decisions": "Décisions Prises",
+    "complianceRate": "Taux de Conformité",
+    "inquiries": "Demandes de Citoyens",
+    "resolvedComplaints": "Plaintes Résolues"
+  },
+  "activities": {
+    "title": "Activités Actuelles",
+    "description": "Restez informé de nos dernières initiatives et activités dans le domaine de la protection des données personnelles."
+  },
+  "events": {
+    "title": "Événements Récents",
+    "description": "Découvrez nos événements récents et à venir liés à la protection des données et à la vie privée."
+  },
+  "footer": {
+    "quickLinks": "Liens Rapides",
+    "contact": "Coordonnées",
+    "address": "Adresse :",
+    "phone": "Téléphone :",
+    "fax": "Fax :",
+    "email": "Email :",
+    "followUs": "Suivez-nous",
+    "copyright": "© 2023 Autorité Nationale de Protection des Données à Caractère Personnel. Tous droits réservés."
+  }
+}

@@ -1,0 +1,79 @@
+
+{
+  "meta": {
+    "title": "National Authority for Personal Data Protection - Algeria",
+    "description": "The National Authority for Personal Data Protection in Algeria is responsible for ensuring the protection of personal data and privacy rights."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "Who we are?",
+    "activities": "Activities",
+    "concernedParties": "Concerned Parties",
+    "events": "Events",
+    "contact": "Contact"
+  },
+  "actions": {
+    "search": "Search",
+    "language": "Language",
+    "theme": "Theme",
+    "readMore": "Read More",
+    "viewAll": "View All",
+    "loadMore": "Load More",
+    "submit": "Submit",
+    "send": "Send"
+  },
+  "languages": {
+    "en": "English",
+    "fr": "French",
+    "ar": "Arabic"
+  },
+  "hero": {
+    "slide1": {
+      "title": "Protecting Personal Data",
+      "description": "The National Authority for Personal Data Protection is committed to safeguarding your privacy and personal information."
+    },
+    "slide2": {
+      "title": "About Law 18-07",
+      "description": "Learn about the legal framework that governs personal data protection in Algeria."
+    },
+    "slide3": {
+      "title": "Economic & Digital Growth",
+      "description": "Discover how data protection contributes to sustainable economic and digital development."
+    },
+    "slide4": {
+      "title": "Invitation for Concerned Parties",
+      "description": "Register your organization to ensure compliance with data protection regulations."
+    }
+  },
+  "about": {
+    "title": "About the Authority",
+    "description": "The National Authority for Personal Data Protection (ANPDP) is an independent administrative authority established to oversee the protection of personal data in Algeria. Our mission is to ensure the proper application of the law regarding the processing of personal data and to guarantee that such processing respects human dignity, privacy, and public freedoms."
+  },
+  "statistics": {
+    "title": "Our Impact",
+    "concernedParties": "Concerned Parties",
+    "dataProtectionCases": "Data Protection Cases",
+    "decisions": "Decisions Made",
+    "complianceRate": "Compliance Rate",
+    "inquiries": "Citizen Inquiries",
+    "resolvedComplaints": "Resolved Complaints"
+  },
+  "activities": {
+    "title": "Current Activities",
+    "description": "Stay updated with our latest initiatives and activities in the field of personal data protection."
+  },
+  "events": {
+    "title": "Latest Events",
+    "description": "Discover our recent and upcoming events related to data protection and privacy."
+  },
+  "footer": {
+    "quickLinks": "Quick Links",
+    "contact": "Contact Information",
+    "address": "Address:",
+    "phone": "Phone:",
+    "fax": "Fax:",
+    "email": "Email:",
+    "followUs": "Follow Us",
+    "copyright": "© 2023 National Authority for Personal Data Protection. All rights reserved."
+  }
+}

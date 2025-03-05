@@ -37,3 +37,5 @@ export const getBrowserLanguage = (): Language => {
     ? browserLang 
     : 'fr') as Language;
 };
+
+export { Language };

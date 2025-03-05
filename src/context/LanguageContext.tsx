@@ -1,6 +1,7 @@
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { Language, availableLanguages, getBrowserLanguage, getLanguageDirection } from '../utils/i18n';
+import { Language } from '../types';
+import { availableLanguages, getBrowserLanguage, getLanguageDirection } from '../utils/i18n';
 
 interface LanguageContextType {
   language: Language;

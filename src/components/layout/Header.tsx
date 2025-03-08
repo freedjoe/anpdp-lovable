@@ -57,7 +57,7 @@ export const Header = () => {
                 alt="ANPDP Logo"
                 className="h-10 w-auto"
               />
-              <div className="flex flex-col">
+              <div className="hidden md:flex flex-col">
                 <span className="text-xs font-semibold text-gray-700 dark:text-gray-300">
                   {language === 'ar' ? 'السلطة الوطنية لحماية البيانات ذات الطابع الشخصي' : 'L\'Autorité Nationale de Protection des Données à Caractère Personnel'}
                 </span>

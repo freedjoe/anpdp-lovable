@@ -1,13 +1,12 @@
-
-import { useLanguage } from '@/context/LanguageContext';
-import { NavItem } from '@/types';
-import { getTranslation } from '@/utils/i18n';
-import { Menu, X } from 'lucide-react';
-import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { LanguageSwitcher } from '../ui/LanguageSwitcher';
-import { SearchModal } from '../ui/SearchModal';
-import { ThemeToggle } from '../ui/ThemeToggle';
+import { useLanguage } from "@/context/LanguageContext";
+import { NavItem } from "@/types";
+import { getTranslation } from "@/utils/i18n";
+import { Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { LanguageSwitcher } from "../ui/LanguageSwitcher";
+import { SearchModal } from "../ui/SearchModal";
+import { ThemeToggle } from "../ui/ThemeToggle";
 
 export const Header = () => {
   const { language, direction } = useLanguage();
@@ -18,12 +17,12 @@ export const Header = () => {
   const t = (key: string) => getTranslation(language, key);
 
   const navItems: NavItem[] = [
-    { label: t('nav.home'), href: '/' },
-    { label: t('nav.about'), href: '/about' },
-    { label: t('nav.activities'), href: '/activities' },
-    { label: t('nav.concernedParties'), href: '/concerned-parties' },
-    { label: t('nav.events'), href: '/events' },
-    { label: t('nav.contact'), href: '/contact' },
+    { label: t("nav.home"), href: "/" },
+    { label: t("nav.about"), href: "/about" },
+    { label: t("nav.activities"), href: "/activities" },
+    { label: t("nav.concernedParties"), href: "/concerned-parties" },
+    { label: t("nav.events"), href: "/events" },
+    { label: t("nav.contact"), href: "/contact" },
   ];
 
   useEffect(() => {
@@ -31,8 +30,8 @@ export const Header = () => {
       setIsScrolled(window.scrollY > 10);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
@@ -43,11 +42,11 @@ export const Header = () => {
   return (
     <header
       className={`fixed top-0 z-40 w-full transition-all duration-300 ${
-        isScrolled ? 'border-b bg-background/80 backdrop-blur-lg' : 'bg-transparent'
+        isScrolled ? "border-b bg-background/80 backdrop-blur-lg" : "bg-transparent"
       }`}
     >
-      <div className="container-custom mx-auto flex h-16 items-center justify-between">
-        {/* Logo and Site Name */}
+      <div className="container-custom mx-auto flex h-16 items-center justify-between pl-10">
+        {/* Logo and Site Name 
         <Link to="/" className="flex items-center space-x-2">
           <div className="flex items-center gap-2">
             <img
@@ -60,16 +59,13 @@ export const Header = () => {
             </span>
           </div>
         </Link>
-
+*/}
         {/* Desktop Navigation */}
         <nav className="hidden lg:block">
-          <ul className="flex items-center space-x-6" style={{ flexDirection: direction === 'rtl' ? 'row-reverse' : 'row' }}>
+          <ul className="flex items-center space-x-6" style={{ flexDirection: direction === "rtl" ? "row-reverse" : "row" }}>
             {navItems.map((item) => (
               <li key={item.href}>
-                <Link
-                  to={item.href}
-                  className={`nav-link ${location.pathname === item.href ? 'nav-link-active' : ''}`}
-                >
+                <Link to={item.href} className={`nav-link ${location.pathname === item.href ? "nav-link-active" : ""}`}>
                   {item.label}
                 </Link>
               </li>
@@ -87,7 +83,7 @@ export const Header = () => {
           <button
             className="ml-2 rounded-md p-2 text-foreground lg:hidden"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           >
             {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -104,7 +100,7 @@ export const Header = () => {
                   <Link
                     to={item.href}
                     className={`block rounded-lg p-3 text-lg transition-colors hover:bg-secondary ${
-                      location.pathname === item.href ? 'bg-secondary font-medium' : ''
+                      location.pathname === item.href ? "bg-secondary font-medium" : ""
                     }`}
                   >
                     {item.label}

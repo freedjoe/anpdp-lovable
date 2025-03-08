@@ -75,9 +75,9 @@ export const Header = () => {
             <LanguageSwitcher />
             <ThemeToggle />
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu Button - Now green */}
             <button
-              className="ml-2 rounded-md p-2 text-foreground lg:hidden"
+              className="ml-2 rounded-md p-2 text-white bg-emerald-600 hover:bg-emerald-700 lg:hidden"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             >
@@ -86,11 +86,11 @@ export const Header = () => {
           </div>
         </div>
 
-        {/* Navigation bar */}
-        <div className="bg-emerald-600 py-2">
-          {/* Desktop Navigation */}
-          <nav className="hidden px-4 lg:block">
-            <ul className="flex items-center space-x-6" style={{ flexDirection: direction === "rtl" ? "row-reverse" : "row" }}>
+        {/* Navigation bar - Now centered for desktop */}
+        <div className="bg-emerald-600 py-2 hidden lg:block">
+          {/* Desktop Navigation - Centered */}
+          <nav className="px-4">
+            <ul className="flex items-center justify-center space-x-6" style={{ flexDirection: direction === "rtl" ? "row-reverse" : "row" }}>
               {navItems.map((item) => (
                 <li key={item.href}>
                   <Link 

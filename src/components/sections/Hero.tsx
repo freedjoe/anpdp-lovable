@@ -23,7 +23,7 @@ export const Hero = () => {
       id: 1,
       title: t('hero.slide1.title'),
       description: t('hero.slide1.description'),
-      imageUrl: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+      imageUrl: 'https://images.unsplash.com/photo-1579621970795-87facc2f976d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
     },
     {
       id: 2,

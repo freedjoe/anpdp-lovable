@@ -35,13 +35,13 @@ export const Hero = () => {
       id: 3,
       title: t('hero.slide3.title'),
       description: t('hero.slide3.description'),
-      imageUrl: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+      imageUrl: 'https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
     },
     {
       id: 4,
       title: t('hero.slide4.title'),
       description: t('hero.slide4.description'),
-      imageUrl: 'https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+      imageUrl: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
     },
   ];
 

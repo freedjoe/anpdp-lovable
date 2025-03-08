@@ -1,3 +1,4 @@
+
 import { useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { Footer } from "./Footer";
@@ -14,7 +15,7 @@ export const Layout = () => {
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
-      <main className="flex-1 pt-20">
+      <main className="flex-1 pt-28">
         <Outlet />
       </main>
       <Footer />

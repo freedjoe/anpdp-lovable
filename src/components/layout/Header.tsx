@@ -1,7 +1,8 @@
+
 import { useLanguage } from "@/context/LanguageContext";
 import { NavItem } from "@/types";
 import { getTranslation } from "@/utils/i18n";
-import { Menu, X } from "lucide-react";
+import { Menu, Shield, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { LanguageSwitcher } from "../ui/LanguageSwitcher";
@@ -45,48 +46,65 @@ export const Header = () => {
         isScrolled ? "border-b bg-background/80 backdrop-blur-lg" : "bg-transparent"
       }`}
     >
-      <div className="container-custom mx-auto flex h-16 items-center justify-between pl-10">
-        {/* Logo and Site Name 
-        <Link to="/" className="flex items-center space-x-2">
-          <div className="flex items-center gap-2">
-            <img
-              src="https://anpdp.dz/fr/wp-content/uploads/sites/2/2022/07/cropped-logo-anpdp-sm.png"
-              alt="ANPDP Logo"
-              className="h-10 w-auto"
-            />
-            <span className="hidden text-lg font-semibold md:block">
-              {language === 'ar' ? 'السلطة الوطنية لحماية البيانات' : 'ANPDP'}
-            </span>
+      <div className="container-custom mx-auto flex flex-col">
+        {/* Top part with logo and site name */}
+        <div className="flex h-16 items-center justify-between px-4">
+          {/* Logo and Site Name */}
+          <Link to="/" className="flex items-center space-x-2" style={{ direction: 'ltr' }}>
+            <div className="flex items-center gap-2">
+              <img
+                src="https://anpdp.dz/fr/wp-content/uploads/sites/2/2022/07/cropped-logo-anpdp-sm.png"
+                alt="ANPDP Logo"
+                className="h-10 w-auto"
+              />
+              <div className="flex flex-col">
+                <span className="text-xs font-semibold text-gray-700 dark:text-gray-300">
+                  {language === 'ar' ? 'السلطة الوطنية لحماية البيانات ذات الطابع الشخصي' : 'L\'Autorité Nationale de Protection des Données à Caractère Personnel'}
+                </span>
+                <div className="flex items-center gap-1">
+                  <Shield className="h-4 w-4 text-emerald-600" />
+                  <span className="text-xs font-medium text-emerald-600">ANPDP</span>
+                </div>
+              </div>
+            </div>
+          </Link>
+
+          {/* Action Icons */}
+          <div className="flex items-center space-x-2">
+            <SearchModal />
+            <LanguageSwitcher />
+            <ThemeToggle />
+
+            {/* Mobile Menu Button */}
+            <button
+              className="ml-2 rounded-md p-2 text-foreground lg:hidden"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            >
+              {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
           </div>
-        </Link>
-*/}
-        {/* Desktop Navigation */}
-        <nav className="hidden lg:block">
-          <ul className="flex items-center space-x-6" style={{ flexDirection: direction === "rtl" ? "row-reverse" : "row" }}>
-            {navItems.map((item) => (
-              <li key={item.href}>
-                <Link to={item.href} className={`nav-link ${location.pathname === item.href ? "nav-link-active" : ""}`}>
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        </div>
 
-        {/* Action Icons */}
-        <div className="flex items-center space-x-2">
-          <SearchModal />
-          <LanguageSwitcher />
-          <ThemeToggle />
-
-          {/* Mobile Menu Button */}
-          <button
-            className="ml-2 rounded-md p-2 text-foreground lg:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          >
-            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
+        {/* Navigation bar */}
+        <div className="bg-emerald-600 py-2">
+          {/* Desktop Navigation */}
+          <nav className="hidden px-4 lg:block">
+            <ul className="flex items-center space-x-6" style={{ flexDirection: direction === "rtl" ? "row-reverse" : "row" }}>
+              {navItems.map((item) => (
+                <li key={item.href}>
+                  <Link 
+                    to={item.href} 
+                    className={`nav-link text-sm font-medium text-white hover:text-white/90 ${
+                      location.pathname === item.href ? "font-bold" : ""
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
       </div>
 

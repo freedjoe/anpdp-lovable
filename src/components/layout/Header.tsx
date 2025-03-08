@@ -40,6 +40,14 @@ export const Header = () => {
     setIsMenuOpen(false);
   }, [location]);
 
+  // Helper function to check if a nav item is active
+  const isActive = (href: string) => {
+    if (href === '/' && location.pathname === '/') {
+      return true;
+    }
+    return location.pathname === href;
+  };
+
   return (
     <header
       className={`fixed top-0 z-40 w-full transition-all duration-300 ${
@@ -96,7 +104,7 @@ export const Header = () => {
                   <Link 
                     to={item.href} 
                     className={`nav-link text-sm font-medium text-white hover:text-white/90 ${
-                      location.pathname === item.href ? "font-bold" : ""
+                      isActive(item.href) ? "nav-link-active" : ""
                     }`}
                   >
                     {item.label}
@@ -118,7 +126,7 @@ export const Header = () => {
                   <Link
                     to={item.href}
                     className={`block rounded-lg p-3 text-lg transition-colors hover:bg-secondary ${
-                      location.pathname === item.href ? "bg-secondary font-medium" : ""
+                      isActive(item.href) ? "bg-secondary font-medium" : ""
                     }`}
                   >
                     {item.label}

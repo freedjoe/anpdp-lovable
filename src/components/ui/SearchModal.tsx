@@ -57,11 +57,11 @@ export const SearchModal = () => {
   return (
     <>
       <button
-        className="rounded-full p-2 transition-colors hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-primary/50"
+        className="rounded-full p-2 transition-colors hover:bg-emerald-700 focus:outline-none"
         onClick={handleOpen}
         aria-label={t('actions.search')}
       >
-        <Search className="h-5 w-5" />
+        <Search className="h-5 w-5 text-white" />
       </button>
 
       {isOpen && (

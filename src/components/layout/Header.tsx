@@ -116,32 +116,40 @@ export const Header = () => {
           </div>
         </div>
 
-        {/* Action Icons - Hidden on mobile, visible on desktop */}
-        <div className="hidden md:flex justify-end space-x-2 px-4 py-2">
-          <SearchModal />
-          <LanguageSwitcher />
-          <ThemeToggle />
-        </div>
-
-        {/* Navigation bar - Now centered for desktop */}
+        {/* Navigation bar - Now with action icons integrated */}
         <div className="bg-emerald-600 py-2 hidden lg:block">
-          {/* Desktop Navigation - Centered */}
-          <nav className="px-4">
-            <ul className="flex items-center justify-center space-x-6" style={{ flexDirection: direction === "rtl" ? "row-reverse" : "row" }}>
-              {navItems.map((item) => (
-                <li key={item.href}>
-                  <Link 
-                    to={item.href} 
-                    className={`nav-link text-sm font-medium text-white hover:text-white/90 ${
-                      isActive(item.href) ? "nav-link-active" : ""
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          <div className="container flex items-center justify-between">
+            {/* Desktop Navigation */}
+            <nav className="flex-1">
+              <ul className="flex items-center justify-center space-x-6" style={{ flexDirection: direction === "rtl" ? "row-reverse" : "row" }}>
+                {navItems.map((item) => (
+                  <li key={item.href}>
+                    <Link 
+                      to={item.href} 
+                      className={`nav-link text-sm font-medium text-white hover:text-white/90 ${
+                        isActive(item.href) ? "nav-link-active" : ""
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+            
+            {/* Action Icons - Now in the green navigation bar */}
+            <div className="flex items-center space-x-3 px-4">
+              <div className="text-white">
+                <SearchModal />
+              </div>
+              <div className="text-white">
+                <LanguageSwitcher />
+              </div>
+              <div className="text-white">
+                <ThemeToggle />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -176,3 +184,4 @@ export const Header = () => {
     </header>
   );
 };
+

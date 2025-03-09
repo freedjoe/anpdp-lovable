@@ -18,14 +18,14 @@ export const ThemeToggle = () => {
 
   return (
     <button
-      className="rounded-full p-2 transition-colors hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-primary/50"
+      className="rounded-full p-2 transition-colors hover:bg-emerald-700 focus:outline-none"
       onClick={toggleTheme}
       aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
     >
       {theme === 'light' ? (
-        <Moon className="h-5 w-5 transition-transform duration-300 ease-in-out hover:rotate-12" />
+        <Moon className="h-5 w-5 text-white transition-transform duration-300 ease-in-out hover:rotate-12" />
       ) : (
-        <Sun className="h-5 w-5 transition-transform duration-300 ease-in-out hover:rotate-12" />
+        <Sun className="h-5 w-5 text-white transition-transform duration-300 ease-in-out hover:rotate-12" />
       )}
     </button>
   );

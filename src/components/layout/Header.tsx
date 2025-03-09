@@ -155,7 +155,7 @@ export const Header = () => {
 
       {/* Mobile Navigation Menu */}
       {isMenuOpen && (
-        <div className="fixed inset-0 z-30 mt-16 overflow-y-auto bg-background lg:hidden">
+        <div className="fixed inset-0 z-30 mt-16 overflow-y-auto bg-emerald-600 lg:hidden animate-slide-in-right">
           <nav className="container-custom py-6">
             {/* Mobile Action Icons */}
             <div className="flex justify-center space-x-4 mb-6">
@@ -169,8 +169,8 @@ export const Header = () => {
                 <li key={item.href}>
                   <Link
                     to={item.href}
-                    className={`block rounded-lg p-3 text-lg transition-colors hover:bg-secondary ${
-                      isActive(item.href) ? "bg-secondary font-medium" : ""
+                    className={`block mobile-nav-link rounded-lg p-3 text-lg text-white transition-colors ${
+                      isActive(item.href) ? "font-medium after:w-full" : ""
                     }`}
                   >
                     {item.label}
@@ -184,4 +184,3 @@ export const Header = () => {
     </header>
   );
 };
-

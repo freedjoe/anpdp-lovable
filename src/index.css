@@ -124,6 +124,11 @@
   .nav-link-active {
     @apply text-foreground after:w-full;
   }
+  
+  /* Mobile Navigation Link Style */
+  .mobile-nav-link {
+    @apply relative transition-all duration-200 hover:bg-emerald-700 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full;
+  }
 }
 
 @keyframes fadeIn {
@@ -145,3 +150,4 @@
     opacity: 1;
   }
 }
+

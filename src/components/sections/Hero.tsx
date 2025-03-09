@@ -22,7 +22,7 @@ export const Hero = () => {
       id: 1,
       title: t('hero.slide1.title'),
       description: t('hero.slide1.description'),
-      imageUrl: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+      imageUrl: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
     },
     {
       id: 2,
@@ -70,7 +70,6 @@ export const Hero = () => {
 
   return (
     <section className="relative h-[70vh] min-h-[500px] w-full bg-black">
-      {/* Slides */}
       {slides.map((slide, index) => (
         <div
           key={slide.id}
@@ -78,7 +77,6 @@ export const Hero = () => {
             index === currentSlide ? 'opacity-100' : 'opacity-0 pointer-events-none'
           }`}
         >
-          {/* Background Image */}
           <div 
             className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-3000"
             style={{ 
@@ -88,7 +86,6 @@ export const Hero = () => {
             }}
           />
           
-          {/* Content */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="container-custom">
               <div className="max-w-xl">
@@ -122,7 +119,6 @@ export const Hero = () => {
         </div>
       ))}
 
-      {/* Navigation Arrows */}
       <button
         className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/10 p-2 text-white backdrop-blur-md transition-all hover:bg-white/20"
         onClick={prevSlide}
@@ -138,7 +134,6 @@ export const Hero = () => {
         {direction === 'rtl' ? <ChevronLeft className="h-6 w-6" /> : <ChevronRight className="h-6 w-6" />}
       </button>
 
-      {/* Dots */}
       <div className="absolute bottom-6 left-1/2 flex -translate-x-1/2 space-x-2">
         {slides.map((_, index) => (
           <button

@@ -2,7 +2,7 @@
 import { useLanguage } from "@/context/LanguageContext";
 import { NavItem } from "@/types";
 import { getTranslation } from "@/utils/i18n";
-import { Menu, Shield, X } from "lucide-react";
+import { Flag, Menu, Shield, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { LanguageSwitcher } from "../ui/LanguageSwitcher";
@@ -57,17 +57,21 @@ export const Header = () => {
       <div className="container-custom mx-auto flex flex-col">
         {/* Top part with logo and site name */}
         <div className="flex h-16 items-center justify-between px-4">
-          {/* Logo and Site Name */}
-          <Link to="/" className="flex items-center space-x-2" style={{ direction: 'ltr' }}>
-            <div className="flex items-center gap-2">
+          {/* Logo, Site Name and Flag */}
+          <div className="flex items-center justify-between w-full">
+            {/* Logo and Site Name */}
+            <div className="flex items-center gap-3">
               <img
                 src="https://anpdp.dz/fr/wp-content/uploads/sites/2/2022/07/cropped-logo-anpdp-sm.png"
                 alt="ANPDP Logo"
                 className="h-10 w-auto"
               />
-              <div className="hidden md:flex flex-col">
+              <div className="hidden md:flex flex-col items-center text-center">
                 <span className="text-xs font-semibold text-gray-700 dark:text-gray-300">
-                  {language === 'ar' ? 'السلطة الوطنية لحماية البيانات ذات الطابع الشخصي' : 'L\'Autorité Nationale de Protection des Données à Caractère Personnel'}
+                  السلطة الوطنية لحماية البيانات ذات الطابع الشخصي
+                </span>
+                <span className="text-xs font-semibold text-gray-700 dark:text-gray-300">
+                  L'Autorité Nationale de Protection des Données à Caractère Personnel
                 </span>
                 <div className="flex items-center gap-1">
                   <Shield className="h-4 w-4 text-emerald-600" />
@@ -75,22 +79,37 @@ export const Header = () => {
                 </div>
               </div>
             </div>
-          </Link>
+            
+            {/* Centered Title for mobile - only show on mobile */}
+            <div className="md:hidden flex flex-grow justify-center">
+              <div className="flex items-center">
+                <Shield className="h-4 w-4 text-emerald-600" />
+                <span className="text-xs font-medium text-emerald-600 ml-1">ANPDP</span>
+              </div>
+            </div>
+            
+            {/* Algerian Flag on the right */}
+            <div className="hidden md:flex items-center">
+              <div className="rounded-full overflow-hidden w-8 h-8 border-2 border-gray-200">
+                <Flag className="h-8 w-8 text-red-600" />
+              </div>
+            </div>
 
-          {/* Action Icons */}
-          <div className="flex items-center space-x-2">
-            <SearchModal />
-            <LanguageSwitcher />
-            <ThemeToggle />
+            {/* Action Icons */}
+            <div className="flex items-center space-x-2">
+              <SearchModal />
+              <LanguageSwitcher />
+              <ThemeToggle />
 
-            {/* Mobile Menu Button - Now green */}
-            <button
-              className="ml-2 rounded-md p-2 text-white bg-emerald-600 hover:bg-emerald-700 lg:hidden"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-            >
-              {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </button>
+              {/* Mobile Menu Button - Now green */}
+              <button
+                className="ml-2 rounded-md p-2 text-white bg-emerald-600 hover:bg-emerald-700 lg:hidden"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+              >
+                {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              </button>
+            </div>
           </div>
         </div>
 
@@ -120,7 +139,7 @@ export const Header = () => {
       {isMenuOpen && (
         <div className="fixed inset-0 z-30 mt-16 overflow-y-auto bg-background lg:hidden">
           <nav className="container-custom py-6">
-            <ul className="space-y-4">
+            <ul className="space-y-4" style={{ direction: direction }}>
               {navItems.map((item) => (
                 <li key={item.href}>
                   <Link

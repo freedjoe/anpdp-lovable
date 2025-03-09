@@ -2,7 +2,7 @@
 import { useLanguage } from "@/context/LanguageContext";
 import { NavItem } from "@/types";
 import { getTranslation } from "@/utils/i18n";
-import { Flag, Menu, Shield, X } from "lucide-react";
+import { Menu, Shield, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { LanguageSwitcher } from "../ui/LanguageSwitcher";
@@ -62,7 +62,7 @@ export const Header = () => {
             {/* Logo and Site Name */}
             <div className="flex items-center gap-3">
               <img
-                src="https://anpdp.dz/fr/wp-content/uploads/sites/2/2022/07/cropped-logo-anpdp-sm.png"
+                src="/lovable-uploads/949d7b16-a365-42b9-a70f-6a2335e12b1c.png"
                 alt="ANPDP Logo"
                 className="h-10 w-auto"
               />
@@ -91,7 +91,11 @@ export const Header = () => {
             {/* Algerian Flag on the right */}
             <div className="hidden md:flex items-center">
               <div className="rounded-full overflow-hidden w-8 h-8 border-2 border-gray-200">
-                <Flag className="h-8 w-8 text-red-600" />
+                <img 
+                  src="/lovable-uploads/c3581462-1e64-4bf4-9d4f-052a50edbd99.png" 
+                  alt="Algerian Flag"
+                  className="h-8 w-8"
+                />
               </div>
             </div>
 

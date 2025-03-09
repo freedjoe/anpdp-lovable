@@ -1,3 +1,4 @@
+
 import { useLanguage } from '@/context/LanguageContext';
 import { getTranslation } from '@/utils/i18n';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
@@ -22,7 +23,7 @@ export const Hero = () => {
       id: 1,
       title: t('hero.slide1.title'),
       description: t('hero.slide1.description'),
-      imageUrl: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+      imageUrl: '/lovable-uploads/949d7b16-a365-42b9-a70f-6a2335e12b1c.png',
     },
     {
       id: 2,
@@ -83,6 +84,10 @@ export const Hero = () => {
               backgroundImage: `url(${slide.imageUrl})`,
               filter: 'brightness(0.6)',
               transform: index === currentSlide ? 'scale(1.05)' : 'scale(1)',
+              backgroundSize: index === 0 ? 'contain' : 'cover', // Special handling for the logo slide
+              backgroundColor: index === 0 ? '#000' : 'transparent', // Black background for the logo slide
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'center',
             }}
           />
           

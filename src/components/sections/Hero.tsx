@@ -1,3 +1,4 @@
+
 import { useLanguage } from '@/context/LanguageContext';
 import { getTranslation } from '@/utils/i18n';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
@@ -17,6 +18,7 @@ export const Hero = () => {
   
   const t = (key: string) => getTranslation(language, key);
 
+  // Update the slides with the new image for the first slide
   const slides: SlideContent[] = [
     {
       id: 1,

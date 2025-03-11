@@ -48,6 +48,19 @@ export const Header = () => {
     return location.pathname === href;
   };
 
+  // Prevent scrolling when mobile menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
+
   return (
     <header
       className={`fixed top-0 z-40 w-full transition-all duration-300 ${
@@ -153,11 +166,10 @@ export const Header = () => {
         </div>
       </div>
 
-      {/* Mobile Navigation Menu - Updated with growing animation and correct z-index */}
-      <div className={`fixed inset-0 z-40 pointer-events-none ${isMenuOpen ? 'menu-open' : ''}`}>
-        <div className={`mobile-menu-overlay ${isMenuOpen ? 'active' : ''}`}></div>
-        <div className={`mobile-menu-container ${isMenuOpen ? 'active' : ''}`}>
-          <nav className="container-custom py-6 pt-20">
+      {/* Mobile Navigation Menu - Fixed with always solid background */}
+      {isMenuOpen && (
+        <div className="fixed inset-0 z-40 bg-emerald-600">
+          <div className="container-custom py-6 pt-20">
             {/* Mobile Action Icons */}
             <div className="flex justify-center space-x-4 mb-6">
               <SearchModal />
@@ -179,9 +191,9 @@ export const Header = () => {
                 </li>
               ))}
             </ul>
-          </nav>
+          </div>
         </div>
-      </div>
+      )}
     </header>
   );
 };

@@ -106,7 +106,7 @@ export const Header = () => {
               
               {/* Right: Menu button */}
               <button
-                className="rounded-md p-2 text-white bg-emerald-600 hover:bg-emerald-700"
+                className="rounded-md p-2 text-white bg-emerald-600 hover:bg-emerald-700 z-50 relative"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 aria-label={isMenuOpen ? "Close menu" : "Open menu"}
               >
@@ -153,10 +153,11 @@ export const Header = () => {
         </div>
       </div>
 
-      {/* Mobile Navigation Menu */}
-      {isMenuOpen && (
-        <div className="fixed inset-0 z-30 mt-16 overflow-y-auto bg-emerald-600 lg:hidden animate-slide-in-right">
-          <nav className="container-custom py-6">
+      {/* Mobile Navigation Menu - Updated with grow animation */}
+      <div className={`fixed inset-0 z-40 pointer-events-none ${isMenuOpen ? 'menu-open' : ''}`}>
+        <div className={`mobile-menu-overlay ${isMenuOpen ? 'active' : ''}`}></div>
+        <div className={`mobile-menu-container ${isMenuOpen ? 'active' : ''}`}>
+          <nav className="container-custom py-6 pt-20">
             {/* Mobile Action Icons */}
             <div className="flex justify-center space-x-4 mb-6">
               <SearchModal />
@@ -180,7 +181,7 @@ export const Header = () => {
             </ul>
           </nav>
         </div>
-      )}
+      </div>
     </header>
   );
 };

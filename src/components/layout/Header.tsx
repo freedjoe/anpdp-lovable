@@ -104,7 +104,7 @@ export const Header = () => {
                 <span className="text-xs font-medium text-emerald-600">ANPDP</span>
               </div>
               
-              {/* Right: Menu button */}
+              {/* Right: Menu button - z-50 ensures it stays on top */}
               <button
                 className="rounded-md p-2 text-white bg-emerald-600 hover:bg-emerald-700 z-50 relative"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -153,7 +153,7 @@ export const Header = () => {
         </div>
       </div>
 
-      {/* Mobile Navigation Menu - Updated with grow animation */}
+      {/* Mobile Navigation Menu - Updated with growing animation and correct z-index */}
       <div className={`fixed inset-0 z-40 pointer-events-none ${isMenuOpen ? 'menu-open' : ''}`}>
         <div className={`mobile-menu-overlay ${isMenuOpen ? 'active' : ''}`}></div>
         <div className={`mobile-menu-container ${isMenuOpen ? 'active' : ''}`}>

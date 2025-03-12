@@ -1,4 +1,5 @@
 
+import React, { useEffect } from 'react';
 import { useLanguage } from "@/context/LanguageContext";
 import { NavItem } from "@/types";
 import { X } from "lucide-react";
@@ -18,7 +19,7 @@ export const MobileMenu = ({ isOpen, onClose, navItems, isActive }: MobileMenuPr
   const { direction } = useLanguage();
 
   // Prevent scrolling when mobile menu is open
-  React.useEffect(() => {
+  useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
       document.body.style.position = 'fixed';

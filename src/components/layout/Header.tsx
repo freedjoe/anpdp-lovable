@@ -2,12 +2,11 @@
 import { useLanguage } from "@/context/LanguageContext";
 import { NavItem } from "@/types";
 import { getTranslation } from "@/utils/i18n";
-import { Menu, X } from "lucide-react";
+import { Menu } from "lucide-react";
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { LanguageSwitcher } from "../ui/LanguageSwitcher";
-import { SearchModal } from "../ui/SearchModal";
-import { ThemeToggle } from "../ui/ThemeToggle";
+import { useLocation } from "react-router-dom";
+import { MobileMenu } from "./MobileMenu";
+import { Navigation } from "./Navigation";
 
 export const Header = () => {
   const { language, direction } = useLanguage();
@@ -49,34 +48,6 @@ export const Header = () => {
     }
     return location.pathname === href;
   };
-
-  // Prevent scrolling when mobile menu is open
-  useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-      // Store the current scroll position and reset it when menu closes
-      document.body.style.position = 'fixed';
-      document.body.style.width = '100%';
-      document.body.style.top = `-${window.scrollY}px`;
-    } else {
-      // Restore scroll position when menu closes
-      const scrollY = document.body.style.top;
-      document.body.style.position = '';
-      document.body.style.width = '';
-      document.body.style.top = '';
-      document.body.style.overflow = '';
-      if (scrollY) {
-        window.scrollTo(0, parseInt(scrollY || '0') * -1);
-      }
-    }
-    
-    return () => {
-      document.body.style.position = '';
-      document.body.style.width = '';
-      document.body.style.top = '';
-      document.body.style.overflow = '';
-    };
-  }, [isMenuOpen]);
 
   return (
     <>
@@ -135,109 +106,30 @@ export const Header = () => {
                   <span className="text-xs font-medium text-emerald-600">ANPDP</span>
                 </div>
                 
-                {/* Right: Menu button - z-50 ensures it stays on top */}
+                {/* Right: Menu button */}
                 <button
-                  className="rounded-md p-2 text-white bg-emerald-600 hover:bg-emerald-700 z-50 relative"
+                  className="rounded-md p-2 text-white bg-emerald-600 hover:bg-emerald-700 z-50"
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
                   aria-label={isMenuOpen ? "Close menu" : "Open menu"}
                 >
-                  {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+                  <Menu className="h-5 w-5" />
                 </button>
               </div>
             </div>
           </div>
 
-          {/* Navigation bar - Now with action icons integrated */}
-          <div className="bg-emerald-600 py-2 hidden lg:block">
-            <div className="container flex items-center justify-between">
-              {/* Desktop Navigation */}
-              <nav className="flex-1">
-                <ul className="flex items-center justify-center space-x-6" style={{ flexDirection: direction === "rtl" ? "row-reverse" : "row" }}>
-                  {navItems.map((item) => (
-                    <li key={item.href}>
-                      <Link 
-                        to={item.href} 
-                        className={`nav-link text-sm font-medium text-white hover:text-white/90 ${
-                          isActive(item.href) ? "nav-link-active" : ""
-                        }`}
-                      >
-                        {item.label}
-                      </Link>
-                    </li>
-                  ))}
-                  <li>
-                    <Link 
-                      to="/admin" 
-                      className="nav-link text-sm font-medium text-white hover:text-white/90"
-                    >
-                      Admin
-                    </Link>
-                  </li>
-                </ul>
-              </nav>
-              
-              {/* Action Icons - Now in the green navigation bar */}
-              <div className="flex items-center space-x-3 px-4">
-                <div className="text-white">
-                  <SearchModal />
-                </div>
-                <div className="text-white">
-                  <LanguageSwitcher />
-                </div>
-                <div className="text-white">
-                  <ThemeToggle />
-                </div>
-              </div>
-            </div>
-          </div>
+          {/* Desktop Navigation */}
+          <Navigation navItems={navItems} isActive={isActive} direction={direction} />
         </div>
       </header>
 
-      {/* Mobile Navigation Menu - Completely separate from the header */}
-      {isMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-emerald-600" style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}>
-          <div className="absolute top-4 right-4">
-            <button
-              className="rounded-md p-2 text-white bg-emerald-700 hover:bg-emerald-800 z-50"
-              onClick={() => setIsMenuOpen(false)}
-              aria-label="Close menu"
-            >
-              <X className="h-5 w-5" />
-            </button>
-          </div>
-          <div className="container-custom py-6 pt-20">
-            {/* Mobile Action Icons */}
-            <div className="flex justify-center space-x-4 mb-6">
-              <SearchModal />
-              <LanguageSwitcher />
-              <ThemeToggle />
-            </div>
-            
-            <ul className="space-y-4" style={{ direction: direction }}>
-              {navItems.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    to={item.href}
-                    className={`block mobile-nav-link rounded-lg p-3 text-lg text-white transition-colors ${
-                      isActive(item.href) ? "font-medium after:w-full" : ""
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-              <li>
-                <Link
-                  to="/admin"
-                  className="block mobile-nav-link rounded-lg p-3 text-lg text-white transition-colors"
-                >
-                  Admin
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-      )}
+      {/* Mobile Navigation Menu */}
+      <MobileMenu
+        isOpen={isMenuOpen}
+        onClose={() => setIsMenuOpen(false)}
+        navItems={navItems}
+        isActive={isActive}
+      />
     </>
   );
 };

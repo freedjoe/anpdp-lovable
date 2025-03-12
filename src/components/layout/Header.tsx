@@ -52,123 +52,149 @@ export const Header = () => {
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
+      // Store the current scroll position and reset it when menu closes
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+      document.body.style.top = `-${window.scrollY}px`;
     } else {
+      // Restore scroll position when menu closes
+      const scrollY = document.body.style.top;
+      document.body.style.position = '';
+      document.body.style.width = '';
+      document.body.style.top = '';
       document.body.style.overflow = '';
+      if (scrollY) {
+        window.scrollTo(0, parseInt(scrollY || '0') * -1);
+      }
     }
     
     return () => {
+      document.body.style.position = '';
+      document.body.style.width = '';
+      document.body.style.top = '';
       document.body.style.overflow = '';
     };
   }, [isMenuOpen]);
 
   return (
-    <header
-      className={`fixed top-0 z-40 w-full transition-all duration-300 ${
-        isScrolled ? "border-b bg-background/80 backdrop-blur-lg" : "bg-transparent"
-      }`}
-    >
-      <div className="container-custom mx-auto flex flex-col">
-        {/* Top part with logo and site name */}
-        <div className="flex h-16 items-center justify-center px-4">
-          {/* Main header layout with logo, title, and flag */}
-          <div className="flex items-center justify-between w-full">
-            {/* ANPDP Logo on the left */}
-            <div className="flex items-center">
-              <img
-                src="/public/lovable-uploads/c9e6d04c-c5ef-4130-a173-8b85ca862548.png"
-                alt="ANPDP Logo"
-                className="h-12 w-auto"
-              />
-            </div>
-            
-            {/* Title in the center */}
-            <div className="hidden md:flex flex-col items-center text-center">
-              <span className="text-xs font-semibold text-gray-700 dark:text-gray-300">
-                السلطة الوطنية لحماية البيانات ذات الطابع الشخصي
-              </span>
-              <span className="text-xs font-semibold text-gray-700 dark:text-gray-300">
-                L'Autorité Nationale de Protection des Données à Caractère Personnel
-              </span>
-              <div className="flex items-center gap-1">
-                <span className="text-xs font-medium text-emerald-600">ANPDP</span>
-              </div>
-            </div>
-            
-            {/* Algerian Flag on the right */}
-            <div className="flex items-center">
-              <img
-                src="/public/lovable-uploads/637794c9-4c72-4c1a-8175-cedfc381e7f8.png"
-                alt="Algerian Flag"
-                className="h-10 w-auto rounded-full border-2 border-gray-200"
-              />
-            </div>
-
-            {/* Mobile View - Only show logo and menu button */}
-            <div className="md:hidden flex items-center justify-between w-full">
-              {/* Left: ANPDP Logo */}
-              <img
-                src="/public/lovable-uploads/c9e6d04c-c5ef-4130-a173-8b85ca862548.png"
-                alt="ANPDP Logo"
-                className="h-10 w-auto"
-              />
-              
-              {/* Center: ANPDP text */}
+    <>
+      <header
+        className={`fixed top-0 z-40 w-full transition-all duration-300 ${
+          isScrolled ? "border-b bg-background/80 backdrop-blur-lg" : "bg-transparent"
+        }`}
+      >
+        <div className="container-custom mx-auto flex flex-col">
+          {/* Top part with logo and site name */}
+          <div className="flex h-16 items-center justify-center px-4">
+            {/* Main header layout with logo, title, and flag */}
+            <div className="flex items-center justify-between w-full">
+              {/* ANPDP Logo on the left */}
               <div className="flex items-center">
-                <span className="text-xs font-medium text-emerald-600">ANPDP</span>
+                <img
+                  src="/public/lovable-uploads/c9e6d04c-c5ef-4130-a173-8b85ca862548.png"
+                  alt="ANPDP Logo"
+                  className="h-12 w-auto"
+                />
               </div>
               
-              {/* Right: Menu button - z-50 ensures it stays on top */}
-              <button
-                className="rounded-md p-2 text-white bg-emerald-600 hover:bg-emerald-700 z-50 relative"
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-              >
-                {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-              </button>
+              {/* Title in the center */}
+              <div className="hidden md:flex flex-col items-center text-center">
+                <span className="text-xs font-semibold text-gray-700 dark:text-gray-300">
+                  السلطة الوطنية لحماية البيانات ذات الطابع الشخصي
+                </span>
+                <span className="text-xs font-semibold text-gray-700 dark:text-gray-300">
+                  L'Autorité Nationale de Protection des Données à Caractère Personnel
+                </span>
+                <div className="flex items-center gap-1">
+                  <span className="text-xs font-medium text-emerald-600">ANPDP</span>
+                </div>
+              </div>
+              
+              {/* Algerian Flag on the right */}
+              <div className="flex items-center">
+                <img
+                  src="/public/lovable-uploads/637794c9-4c72-4c1a-8175-cedfc381e7f8.png"
+                  alt="Algerian Flag"
+                  className="h-10 w-auto rounded-full border-2 border-gray-200"
+                />
+              </div>
+
+              {/* Mobile View - Only show logo and menu button */}
+              <div className="md:hidden flex items-center justify-between w-full">
+                {/* Left: ANPDP Logo */}
+                <img
+                  src="/public/lovable-uploads/c9e6d04c-c5ef-4130-a173-8b85ca862548.png"
+                  alt="ANPDP Logo"
+                  className="h-10 w-auto"
+                />
+                
+                {/* Center: ANPDP text */}
+                <div className="flex items-center">
+                  <span className="text-xs font-medium text-emerald-600">ANPDP</span>
+                </div>
+                
+                {/* Right: Menu button - z-50 ensures it stays on top */}
+                <button
+                  className="rounded-md p-2 text-white bg-emerald-600 hover:bg-emerald-700 z-50 relative"
+                  onClick={() => setIsMenuOpen(!isMenuOpen)}
+                  aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                >
+                  {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Navigation bar - Now with action icons integrated */}
+          <div className="bg-emerald-600 py-2 hidden lg:block">
+            <div className="container flex items-center justify-between">
+              {/* Desktop Navigation */}
+              <nav className="flex-1">
+                <ul className="flex items-center justify-center space-x-6" style={{ flexDirection: direction === "rtl" ? "row-reverse" : "row" }}>
+                  {navItems.map((item) => (
+                    <li key={item.href}>
+                      <Link 
+                        to={item.href} 
+                        className={`nav-link text-sm font-medium text-white hover:text-white/90 ${
+                          isActive(item.href) ? "nav-link-active" : ""
+                        }`}
+                      >
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+              
+              {/* Action Icons - Now in the green navigation bar */}
+              <div className="flex items-center space-x-3 px-4">
+                <div className="text-white">
+                  <SearchModal />
+                </div>
+                <div className="text-white">
+                  <LanguageSwitcher />
+                </div>
+                <div className="text-white">
+                  <ThemeToggle />
+                </div>
+              </div>
             </div>
           </div>
         </div>
+      </header>
 
-        {/* Navigation bar - Now with action icons integrated */}
-        <div className="bg-emerald-600 py-2 hidden lg:block">
-          <div className="container flex items-center justify-between">
-            {/* Desktop Navigation */}
-            <nav className="flex-1">
-              <ul className="flex items-center justify-center space-x-6" style={{ flexDirection: direction === "rtl" ? "row-reverse" : "row" }}>
-                {navItems.map((item) => (
-                  <li key={item.href}>
-                    <Link 
-                      to={item.href} 
-                      className={`nav-link text-sm font-medium text-white hover:text-white/90 ${
-                        isActive(item.href) ? "nav-link-active" : ""
-                      }`}
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-            
-            {/* Action Icons - Now in the green navigation bar */}
-            <div className="flex items-center space-x-3 px-4">
-              <div className="text-white">
-                <SearchModal />
-              </div>
-              <div className="text-white">
-                <LanguageSwitcher />
-              </div>
-              <div className="text-white">
-                <ThemeToggle />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Navigation Menu - Fixed with always solid background */}
+      {/* Mobile Navigation Menu - Completely separate from the header */}
       {isMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-emerald-600">
+        <div className="fixed inset-0 z-40 bg-emerald-600" style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}>
+          <div className="absolute top-4 right-4">
+            <button
+              className="rounded-md p-2 text-white bg-emerald-700 hover:bg-emerald-800 z-50"
+              onClick={() => setIsMenuOpen(false)}
+              aria-label="Close menu"
+            >
+              <X className="h-5 w-5" />
+            </button>
+          </div>
           <div className="container-custom py-6 pt-20">
             {/* Mobile Action Icons */}
             <div className="flex justify-center space-x-4 mb-6">
@@ -194,6 +220,6 @@ export const Header = () => {
           </div>
         </div>
       )}
-    </header>
+    </>
   );
 };

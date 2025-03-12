@@ -9,7 +9,382 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      event_translations: {
+        Row: {
+          created_at: string | null
+          description: string | null
+          event_id: string | null
+          id: string
+          language: string
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          description?: string | null
+          event_id?: string | null
+          id?: string
+          language: string
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          description?: string | null
+          event_id?: string | null
+          id?: string
+          language?: string
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "event_translations_event_id_fkey"
+            columns: ["event_id"]
+            isOneToOne: false
+            referencedRelation: "events"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      events: {
+        Row: {
+          created_at: string | null
+          end_date: string | null
+          id: string
+          image_url: string | null
+          is_published: boolean
+          location: string | null
+          start_date: string
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          end_date?: string | null
+          id?: string
+          image_url?: string | null
+          is_published?: boolean
+          location?: string | null
+          start_date: string
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          end_date?: string | null
+          id?: string
+          image_url?: string | null
+          is_published?: boolean
+          location?: string | null
+          start_date?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      faq_translations: {
+        Row: {
+          answer: string
+          created_at: string | null
+          faq_id: string | null
+          id: string
+          language: string
+          question: string
+          updated_at: string | null
+        }
+        Insert: {
+          answer: string
+          created_at?: string | null
+          faq_id?: string | null
+          id?: string
+          language: string
+          question: string
+          updated_at?: string | null
+        }
+        Update: {
+          answer?: string
+          created_at?: string | null
+          faq_id?: string | null
+          id?: string
+          language?: string
+          question?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "faq_translations_faq_id_fkey"
+            columns: ["faq_id"]
+            isOneToOne: false
+            referencedRelation: "faqs"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      faqs: {
+        Row: {
+          category: string | null
+          created_at: string | null
+          id: string
+          is_published: boolean
+          position: number
+          updated_at: string | null
+        }
+        Insert: {
+          category?: string | null
+          created_at?: string | null
+          id?: string
+          is_published?: boolean
+          position?: number
+          updated_at?: string | null
+        }
+        Update: {
+          category?: string | null
+          created_at?: string | null
+          id?: string
+          is_published?: boolean
+          position?: number
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      meeting_translations: {
+        Row: {
+          agenda: string | null
+          created_at: string | null
+          id: string
+          language: string
+          meeting_id: string | null
+          summary: string | null
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          agenda?: string | null
+          created_at?: string | null
+          id?: string
+          language: string
+          meeting_id?: string | null
+          summary?: string | null
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          agenda?: string | null
+          created_at?: string | null
+          id?: string
+          language?: string
+          meeting_id?: string | null
+          summary?: string | null
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "meeting_translations_meeting_id_fkey"
+            columns: ["meeting_id"]
+            isOneToOne: false
+            referencedRelation: "meetings"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      meetings: {
+        Row: {
+          created_at: string | null
+          document_url: string | null
+          id: string
+          is_published: boolean
+          location: string | null
+          meeting_date: string
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          document_url?: string | null
+          id?: string
+          is_published?: boolean
+          location?: string | null
+          meeting_date: string
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          document_url?: string | null
+          id?: string
+          is_published?: boolean
+          location?: string | null
+          meeting_date?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      menu_items: {
+        Row: {
+          created_at: string | null
+          external_url: string | null
+          id: string
+          is_visible: boolean
+          page_id: string | null
+          parent_id: string | null
+          position: number
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          external_url?: string | null
+          id?: string
+          is_visible?: boolean
+          page_id?: string | null
+          parent_id?: string | null
+          position?: number
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          external_url?: string | null
+          id?: string
+          is_visible?: boolean
+          page_id?: string | null
+          parent_id?: string | null
+          position?: number
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "menu_items_page_id_fkey"
+            columns: ["page_id"]
+            isOneToOne: false
+            referencedRelation: "pages"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "menu_items_parent_id_fkey"
+            columns: ["parent_id"]
+            isOneToOne: false
+            referencedRelation: "menu_items"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      menu_translations: {
+        Row: {
+          created_at: string | null
+          id: string
+          label: string
+          language: string
+          menu_item_id: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          label: string
+          language: string
+          menu_item_id?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          label?: string
+          language?: string
+          menu_item_id?: string | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "menu_translations_menu_item_id_fkey"
+            columns: ["menu_item_id"]
+            isOneToOne: false
+            referencedRelation: "menu_items"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      page_translations: {
+        Row: {
+          content: Json
+          created_at: string | null
+          id: string
+          language: string
+          meta_description: string | null
+          page_id: string | null
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          content?: Json
+          created_at?: string | null
+          id?: string
+          language: string
+          meta_description?: string | null
+          page_id?: string | null
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          content?: Json
+          created_at?: string | null
+          id?: string
+          language?: string
+          meta_description?: string | null
+          page_id?: string | null
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "page_translations_page_id_fkey"
+            columns: ["page_id"]
+            isOneToOne: false
+            referencedRelation: "pages"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      pages: {
+        Row: {
+          created_at: string | null
+          id: string
+          slug: string
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          slug: string
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          slug?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      settings: {
+        Row: {
+          created_at: string | null
+          id: string
+          key: string
+          updated_at: string | null
+          value: Json
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          key: string
+          updated_at?: string | null
+          value?: Json
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          key?: string
+          updated_at?: string | null
+          value?: Json
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

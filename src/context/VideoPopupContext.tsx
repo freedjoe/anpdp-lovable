@@ -1,6 +1,7 @@
 
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import { VideoPopup } from '@/components/ui/VideoPopup';
+import { useLocation } from 'react-router-dom';
 
 interface VideoPopupContextType {
   isOpen: boolean;
@@ -12,29 +13,22 @@ const VideoPopupContext = createContext<VideoPopupContextType | undefined>(undef
 
 export function VideoPopupProvider({ children }: { children: React.ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [hasShownPopup, setHasShownPopup] = useState(false);
+  const location = useLocation();
 
   const openPopup = () => setIsOpen(true);
-  const closePopup = () => {
-    setIsOpen(false);
-    setHasShownPopup(true);
-    // Store in localStorage that the user has seen the popup
-    localStorage.setItem('anpdp-video-popup-shown', 'true');
-  };
+  const closePopup = () => setIsOpen(false);
 
   useEffect(() => {
-    // Check if the popup has been shown before
-    const hasShown = localStorage.getItem('anpdp-video-popup-shown');
-    if (!hasShown && !hasShownPopup) {
-      // If not, open the popup after a short delay
+    // Open popup automatically on home page
+    if (location.pathname === '/') {
+      // Open popup after a short delay to let the page render first
       const timer = setTimeout(() => {
         openPopup();
-        setHasShownPopup(true);
-      }, 1500);
+      }, 1000);
 
       return () => clearTimeout(timer);
     }
-  }, [hasShownPopup]);
+  }, [location.pathname]);
 
   return (
     <VideoPopupContext.Provider value={{ isOpen, openPopup, closePopup }}>

@@ -20,7 +20,7 @@ export function VideoPopup({ isOpen, onClose }: VideoPopupProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogOverlay className="bg-black/80" />
+      <DialogOverlay className="bg-black/50" /> {/* Changed opacity from /80 to /50 */}
       <DialogContent className="sm:max-w-[720px] p-0 bg-transparent border-none">
         <button
           onClick={onClose}

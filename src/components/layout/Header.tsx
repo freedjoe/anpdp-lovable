@@ -23,6 +23,8 @@ export const Header = () => {
     { label: t("nav.activities"), href: "/activities" },
     { label: t("nav.concernedParties"), href: "/concerned-parties" },
     { label: t("nav.events"), href: "/events" },
+    { label: t("nav.faq"), href: "/faq" },
+    { label: t("nav.meetings"), href: "/meetings" },
     { label: t("nav.contact"), href: "/contact" },
   ];
 
@@ -163,6 +165,14 @@ export const Header = () => {
                       </Link>
                     </li>
                   ))}
+                  <li>
+                    <Link 
+                      to="/admin" 
+                      className="nav-link text-sm font-medium text-white hover:text-white/90"
+                    >
+                      Admin
+                    </Link>
+                  </li>
                 </ul>
               </nav>
               
@@ -216,6 +226,14 @@ export const Header = () => {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link
+                  to="/admin"
+                  className="block mobile-nav-link rounded-lg p-3 text-lg text-white transition-colors"
+                >
+                  Admin
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

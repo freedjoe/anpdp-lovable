@@ -10,7 +10,10 @@
     "activities": "Activities",
     "concernedParties": "Concerned Parties",
     "events": "Events",
-    "contact": "Contact"
+    "faq": "FAQ",
+    "meetings": "Meetings",
+    "contact": "Contact",
+    "admin": "Admin"
   },
   "actions": {
     "search": "Search",
@@ -65,6 +68,14 @@
   "events": {
     "title": "Latest Events",
     "description": "Discover our recent and upcoming events related to data protection and privacy."
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "description": "Find answers to common questions about personal data protection and the role of ANPDP."
+  },
+  "meetings": {
+    "title": "ANPDP Meetings",
+    "description": "Information about past and upcoming meetings of the National Authority for Personal Data Protection."
   },
   "footer": {
     "quickLinks": "Quick Links",

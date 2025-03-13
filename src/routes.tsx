@@ -15,6 +15,7 @@ import AdminEvents from "@/pages/admin/Events";
 import AdminFAQ from "@/pages/admin/FAQ";
 import AdminMeetings from "@/pages/admin/Meetings";
 import AdminImportContent from "@/pages/admin/ImportContent";
+import AdminMenu from "@/pages/admin/Menu";
 import FAQPage from "@/pages/FAQ";
 import MeetingsPage from "@/pages/Meetings";
 
@@ -38,6 +39,7 @@ export const AppRoutes = () => {
         <Route path="events" element={<AdminEvents />} />
         <Route path="faq" element={<AdminFAQ />} />
         <Route path="meetings" element={<AdminMeetings />} />
+        <Route path="menu" element={<AdminMenu />} />
         <Route path="import" element={<AdminImportContent />} />
       </Route>
     </Routes>

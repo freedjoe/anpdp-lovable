@@ -7,7 +7,9 @@ import {
   HelpCircle,
   Users,
   LogOut,
-  ChevronRight
+  ChevronRight,
+  Upload,
+  Menu
 } from "lucide-react";
 
 interface AdminSidebarProps {
@@ -24,9 +26,11 @@ export const AdminSidebar = ({ open }: AdminSidebarProps) => {
   const navItems = [
     { icon: <LayoutDashboard size={20} />, label: "Dashboard", path: "/admin" },
     { icon: <FileText size={20} />, label: "Content Management", path: "/admin/content" },
+    { icon: <Menu size={20} />, label: "Menu", path: "/admin/menu" },
     { icon: <CalendarDays size={20} />, label: "Events", path: "/admin/events" },
     { icon: <HelpCircle size={20} />, label: "FAQ", path: "/admin/faq" },
     { icon: <Users size={20} />, label: "Meetings", path: "/admin/meetings" },
+    { icon: <Upload size={20} />, label: "Import Content", path: "/admin/import" },
   ];
 
   return (
@@ -66,4 +70,4 @@ export const AdminSidebar = ({ open }: AdminSidebarProps) => {
       </div>
     </aside>
   );
-};
+}

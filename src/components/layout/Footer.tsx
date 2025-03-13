@@ -2,60 +2,57 @@
 import { useLanguage } from '@/context/LanguageContext';
 import { NavItem } from '@/types';
 import { getTranslation } from '@/utils/i18n';
-import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Printer, Twitter } from 'lucide-react';
+import { Facebook, Instagram, Mail, MapPin, Phone, Twitter, Youtube } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 
 export const Footer = () => {
-  const { language, direction } = useLanguage();
+  const { language } = useLanguage();
   const t = (key: string) => getTranslation(language, key);
 
-  const navItems: NavItem[] = [
-    { label: t('nav.home'), href: '/' },
-    { label: t('nav.about'), href: '/about' },
-    { label: t('nav.activities'), href: '/activities' },
-    { label: t('nav.concernedParties'), href: '/concerned-parties' },
-    { label: t('nav.events'), href: '/events' },
-    { label: t('nav.contact'), href: '/contact' },
+  const aboutLinks = [
+    { label: 'Our Mission', href: '/about#mission' },
+    { label: 'Leadership', href: '/about#leadership' },
+    { label: 'Legal Framework', href: '/about#framework' },
+    { label: 'Careers', href: '/careers' },
+  ];
+
+  const serviceLinks = [
+    { label: 'Data Protection', href: '/services/data-protection' },
+    { label: 'File a Complaint', href: '/services/file-complaint' },
+    { label: 'Request Information', href: '/services/request-info' },
+    { label: 'Training Programs', href: '/services/training' },
+  ];
+
+  const resourceLinks = [
+    { label: 'Publications', href: '/resources/publications' },
+    { label: 'FAQ', href: '/faq' },
+    { label: 'Glossary', href: '/resources/glossary' },
+    { label: 'Downloads', href: '/resources/downloads' },
   ];
 
   const contactInfo = {
-    address: '05, Rue Ahmed Kara - El-Biar 16006 - Alger, Algérie',
-    phone: '+213 (0) 23 38 08 60',
-    fax: '+213 (0) 23 38 08 48',
     email: 'contact@anpdp.dz',
+    phone: '+213 (0) 23 38 08 60',
+    address: '05, Rue Ahmed Kara - El-Biar 16006 - Alger, Algérie',
   };
 
   return (
-    <footer className="bg-secondary">
+    <footer className="bg-emerald-50">
       <div className="container-custom py-12">
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {/* Logo and Info */}
-          <div className="flex flex-col space-y-4">
-            <Link to="/" className="flex items-center space-x-2">
-              <img
-                src="https://anpdp.dz/fr/wp-content/uploads/sites/2/2022/07/cropped-logo-anpdp-sm.png"
-                alt="ANPDP Logo"
-                className="h-10 w-auto"
-              />
-              <span className="text-lg font-semibold">
-                {language === 'ar' ? 'السلطة الوطنية' : 'ANPDP'}
-              </span>
-            </Link>
-            <p className="text-sm text-muted-foreground">
-              {t('about.description').substring(0, 150)}...
-            </p>
-          </div>
-
-          {/* Quick Links */}
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          {/* About ANPDP */}
           <div>
-            <h3 className="mb-4 text-lg font-medium">{t('footer.quickLinks')}</h3>
+            <h3 className="mb-4 text-lg font-medium text-emerald-600">About ANPDP</h3>
             <ul className="space-y-2">
-              {navItems.map((item) => (
-                <li key={item.href}>
+              {aboutLinks.map((item, index) => (
+                <li key={index}>
                   <Link 
                     to={item.href} 
-                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                    className="flex items-center gap-2 text-gray-600 transition-colors hover:text-emerald-600"
                   >
+                    <span className="text-emerald-600">→</span>
                     {item.label}
                   </Link>
                 </li>
@@ -63,91 +60,130 @@ export const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {/* Services */}
           <div>
-            <h3 className="mb-4 text-lg font-medium">{t('footer.contact')}</h3>
+            <h3 className="mb-4 text-lg font-medium text-emerald-600">Services</h3>
+            <ul className="space-y-2">
+              {serviceLinks.map((item, index) => (
+                <li key={index}>
+                  <Link 
+                    to={item.href} 
+                    className="flex items-center gap-2 text-gray-600 transition-colors hover:text-emerald-600"
+                  >
+                    <span className="text-emerald-600">→</span>
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Resources */}
+          <div>
+            <h3 className="mb-4 text-lg font-medium text-emerald-600">Resources</h3>
+            <ul className="space-y-2">
+              {resourceLinks.map((item, index) => (
+                <li key={index}>
+                  <Link 
+                    to={item.href} 
+                    className="flex items-center gap-2 text-gray-600 transition-colors hover:text-emerald-600"
+                  >
+                    <span className="text-emerald-600">→</span>
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Newsletter */}
+          <div>
+            <h3 className="mb-4 text-lg font-medium text-emerald-600">Newsletter</h3>
+            <p className="mb-4 text-gray-600">
+              Subscribe to receive the latest news and updates
+            </p>
             <div className="space-y-3">
-              <div className="flex items-start space-x-2" style={{ direction: 'ltr' }}>
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" />
-                <span className="text-sm text-muted-foreground">
-                  {contactInfo.address}
-                </span>
-              </div>
-              <div className="flex items-center space-x-2" style={{ direction: 'ltr' }}>
-                <Phone className="h-4 w-4 text-muted-foreground" />
-                <span className="text-sm text-muted-foreground">{contactInfo.phone}</span>
-              </div>
-              <div className="flex items-center space-x-2" style={{ direction: 'ltr' }}>
-                <Printer className="h-4 w-4 text-muted-foreground" />
-                <span className="text-sm text-muted-foreground">{contactInfo.fax}</span>
-              </div>
-              <div className="flex items-center space-x-2" style={{ direction: 'ltr' }}>
-                <Mail className="h-4 w-4 text-muted-foreground" />
-                <a 
-                  href={`mailto:${contactInfo.email}`} 
-                  className="text-sm text-muted-foreground hover:text-foreground"
-                >
-                  {contactInfo.email}
-                </a>
-              </div>
-            </div>
-            <div className="mt-6">
-              <h3 className="mb-4 text-lg font-medium">{t('footer.location')}</h3>
-              <div className="h-36 w-full overflow-hidden rounded-lg">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3197.2238447594136!2d3.0383!3d36.7574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzbCsDQ1JzI2LjYiTiAzwrAwMicxNy45IkU!5e0!3m2!1sen!2sus!4v1652276580000!5m2!1sen!2sus"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="ANPDP Location"
-                ></iframe>
-              </div>
+              <Input
+                type="email"
+                placeholder="Email address"
+                className="bg-white border-gray-300"
+              />
+              <Button className="w-full bg-emerald-600 hover:bg-emerald-700">
+                Subscribe
+              </Button>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Copyright and Social Media */}
-      <div className="border-t py-4">
-        <div className="container-custom flex flex-col items-center justify-between space-y-4 md:flex-row md:space-y-0">
-          <div className="text-sm text-muted-foreground">
-            {t('footer.copyright')}
+        {/* Contact and Social Media */}
+        <div className="mt-12 grid gap-8 border-t border-emerald-100 pt-8 md:grid-cols-2">
+          {/* Contact Information */}
+          <div>
+            <h3 className="mb-4 text-lg font-medium text-emerald-600">Contact Information</h3>
+            <ul className="space-y-3">
+              <li className="flex items-start gap-3 text-gray-600">
+                <Mail className="mt-1 h-5 w-5 shrink-0 text-emerald-600" />
+                <a 
+                  href={`mailto:${contactInfo.email}`} 
+                  className="hover:text-emerald-600"
+                >
+                  {contactInfo.email}
+                </a>
+              </li>
+              <li className="flex items-start gap-3 text-gray-600">
+                <Phone className="mt-1 h-5 w-5 shrink-0 text-emerald-600" />
+                <span>{contactInfo.phone}</span>
+              </li>
+              <li className="flex items-start gap-3 text-gray-600">
+                <MapPin className="mt-1 h-5 w-5 shrink-0 text-emerald-600" />
+                <span>{contactInfo.address}</span>
+              </li>
+            </ul>
           </div>
-          
-          <div className="flex flex-col items-center space-y-2 md:items-end">
-            <h3 className="text-sm font-medium">{t('footer.followUs')}</h3>
-            <div className="flex space-x-3">
+
+          {/* Social Media */}
+          <div className="flex flex-col items-start md:items-end">
+            <h3 className="mb-4 text-lg font-medium text-emerald-600">Follow Us</h3>
+            <div className="flex gap-4">
               <a 
                 href="#" 
-                className="rounded-full bg-foreground/5 p-2 text-muted-foreground transition-colors hover:bg-foreground/10 hover:text-primary"
+                className="rounded-full bg-white p-2 text-emerald-600 shadow-sm transition-all hover:bg-emerald-600 hover:text-white"
                 aria-label="Facebook"
               >
-                <Facebook className="h-4 w-4" />
+                <Facebook className="h-5 w-5" />
               </a>
               <a 
                 href="#" 
-                className="rounded-full bg-foreground/5 p-2 text-muted-foreground transition-colors hover:bg-foreground/10 hover:text-primary"
+                className="rounded-full bg-white p-2 text-emerald-600 shadow-sm transition-all hover:bg-emerald-600 hover:text-white"
                 aria-label="Twitter"
               >
-                <Twitter className="h-4 w-4" />
+                <Twitter className="h-5 w-5" />
               </a>
               <a 
                 href="#" 
-                className="rounded-full bg-foreground/5 p-2 text-muted-foreground transition-colors hover:bg-foreground/10 hover:text-primary"
+                className="rounded-full bg-white p-2 text-emerald-600 shadow-sm transition-all hover:bg-emerald-600 hover:text-white"
                 aria-label="Instagram"
               >
-                <Instagram className="h-4 w-4" />
+                <Instagram className="h-5 w-5" />
               </a>
               <a 
                 href="#" 
-                className="rounded-full bg-foreground/5 p-2 text-muted-foreground transition-colors hover:bg-foreground/10 hover:text-primary"
-                aria-label="LinkedIn"
+                className="rounded-full bg-white p-2 text-emerald-600 shadow-sm transition-all hover:bg-emerald-600 hover:text-white"
+                aria-label="YouTube"
               >
-                <Linkedin className="h-4 w-4" />
+                <Youtube className="h-5 w-5" />
               </a>
             </div>
+          </div>
+        </div>
+
+        {/* Copyright */}
+        <div className="mt-8 border-t border-emerald-100 pt-8 text-center text-sm text-gray-500">
+          <p>© 2023 National Authority for Personal Data Protection</p>
+          <div className="mt-2 flex flex-wrap justify-center gap-4">
+            <a href="/privacy-policy" className="hover:text-emerald-600">Privacy Policy</a>
+            <a href="/terms" className="hover:text-emerald-600">Terms of Use</a>
+            <a href="/accessibility" className="hover:text-emerald-600">Accessibility</a>
           </div>
         </div>
       </div>

@@ -18,9 +18,29 @@ export function VideoPopup({ isOpen, onClose }: VideoPopupProps) {
     }
   }, [isOpen]);
 
+  // Add event listener for video end
+  useEffect(() => {
+    const videoElement = videoRef.current;
+    
+    const handleVideoEnd = () => {
+      console.log("Video playback ended, closing popup");
+      onClose();
+    };
+    
+    if (videoElement) {
+      videoElement.addEventListener('ended', handleVideoEnd);
+    }
+    
+    return () => {
+      if (videoElement) {
+        videoElement.removeEventListener('ended', handleVideoEnd);
+      }
+    };
+  }, [onClose]);
+
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogOverlay className="bg-black/50" /> {/* Changed opacity from /80 to /50 */}
+      <DialogOverlay className="bg-black/50" />
       <DialogContent className="sm:max-w-[720px] p-0 bg-transparent border-none">
         <button
           onClick={onClose}
